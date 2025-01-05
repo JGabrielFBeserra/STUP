@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model cartao {
+  id      Int      @id @default(autoincrement())
+  saldo   Float?   @db.Float
+  tipo    String?  @db.VarChar(255)
+  status  Boolean?
+  usuario usuario?
+}
+
+model funcionario {
+  id         Int       @id @default(autoincrement())
+  foto       String?   @db.VarChar(255)
+  nome       String?   @db.VarChar(255)
+  nascimento DateTime? @db.DateTime(0)
+  cpf        String?   @unique(map: "cpf") @db.VarChar(255)
+  sexo       String?   @db.VarChar(255)
+  senha      String?   @db.VarChar(255)
+}
+
+model linha {
+  id              Int       @id @default(autoincrement())
+  nome            String?   @db.VarChar(255)
+  local_partida   String?   @db.VarChar(255)
+  local_destino   String?   @db.VarChar(255)
+  horario_inicial DateTime? @db.DateTime(0)
+  horario_final   DateTime? @db.DateTime(0)
+  viagem          viagem[]
+}
+
+model motorista {
+  id         Int       @id @default(autoincrement())
+  foto       String?   @db.VarChar(255)
+  nome       String?   @db.VarChar(255)
+  nascimento DateTime? @db.DateTime(0)
+  cpf        String?   @unique(map: "cpf") @db.VarChar(255)
+  rg         String?   @db.VarChar(255)
+  viagem     viagem[]
+}
+
+model onibus {
+  id     Int      @id @default(autoincrement())
+  modelo String?  @db.VarChar(255)
+  placa  String?  @unique(map: "placa") @db.VarChar(255)
+  viagem viagem[]
+}
+
+model usuario {
+  id              Int               @id @default(autoincrement())
+  foto            String?           @db.VarChar(255)
+  nome            String?           @db.VarChar(255)
+  nascimento      DateTime?         @db.DateTime(0)
+  cpf             String?           @unique(map: "cpf") @db.VarChar(255)
+  senha           String?           @db.VarChar(255)
+  cartao_id       Int?              @unique(map: "cartao_id")
+  cartao          cartao?           @relation(fields: [cartao_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "usuario_ibfk_1")
+  usuarios_viagem usuarios_viagem[]
+}
+
+model usuarios_viagem {
+  id         Int      @id @default(autoincrement())
+  id_usuario Int?
+  id_viagem  Int?
+  usuario    usuario? @relation(fields: [id_usuario], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "usuarios_viagem_ibfk_1")
+  viagem     viagem?  @relation(fields: [id_viagem], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "usuarios_viagem_ibfk_2")
+
+  @@unique([id_usuario, id_viagem], map: "id_usuario")
+  @@index([id_viagem], map: "id_viagem")
+}
+
+model viagem {
+  id              Int               @id @default(autoincrement())
+  id_motorista    Int?
+  id_linha        Int?
+  id_onibus       Int?
+  horario_inicio  DateTime?         @db.DateTime(0)
+  horario_fim     DateTime?         @db.DateTime(0)
+  usuarios_viagem usuarios_viagem[]
+  motorista       motorista?        @relation(fields: [id_motorista], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "viagem_ibfk_1")
+  linha           linha?            @relation(fields: [id_linha], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "viagem_ibfk_2")
+  onibus          onibus?           @relation(fields: [id_onibus], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "viagem_ibfk_3")
+
+  @@index([id_linha], map: "id_linha")
+  @@index([id_motorista], map: "id_motorista")
+  @@index([id_onibus], map: "id_onibus")
+}
