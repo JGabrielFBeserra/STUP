@@ -14,9 +14,7 @@
 </head>
 
 <body>
-    <header>
-        <%- include('partials/public-site/header') %>
-    </header>
+    <%- include('partials/public-site/header') %>
     <section>
         <%- include('partials/public-site/banner', { bannerImage: '/images/public-site/index-banner1.png' ,
             bannerAlt: 'Imagem' , bannerTitle: 'PODE DIZER ADEUS <br> Á FILA' ,
@@ -24,7 +22,6 @@
             , bannerButtonLink: '/carteirinha-linhas#atendimento-presencial' , bannerButtonText: 'PEÇA A SUA' }) %>
     </section>
     <section>
-        <section>
             <div class="container mt-5 mb-5 venha-ser">
               <div class="row">
                 <p class="fs-2 text text-center fw-bold">
@@ -85,11 +82,186 @@
                 <div class="text-center justify-content-center align-items-center mt-4 d-flex link-venha-ser">
                   <a class="text-decoration-underline text-dark" href="/carteirinha-linhas#atendimento-presencial">
                     Quero ser STUP</a>
-                  <img class="px-2" src="/images/public-site/icon-arrow.svg" alt="ícone" />
+                  <img class="px-2" src="/images/public-site/icon-arrow-black.svg" alt="ícone" />
                 </div>
               </div>
             </div>
-          </section>
+    </section>
+    <section>
+      <div class="container text-center mt-5 pt-5 mb-5 pb-5">
+        <h2 style="color: #fff; background-color: none; font-style: italic; -webkit-text-stroke: 1px #602E9A"
+          class="fs-0 text-center p-1 ">
+          COM STUP VOCÊ É TUDO
+        </h2>
+      </div>
+    </section>
+    
+    <section>
+      <%- include('partials/public-site/hgroup', { 
+        h2title: 'O que você procura?', 
+        h3title: 'Aqui na STUP temos <br> várias opções de carteirinha.',
+        h4title: 'Inclusivo para TODOS!' 
+      }) %>
+      <div class="container mt-5" id="galeria">
+        <div class="row mb-5">
+          <div class="d-flex flex-column justify-content-between gap-1 flex-lg-row gap-lg-4">
+            <button class="w-100 btn btn-primary active" data-image="img1.jpg">
+              Uso Comum
+            </button>
+            <button class="w-100 btn btn-outline-primary" data-image="img2.jpg">
+              Uso Escolar
+            </button>
+            <button class="w-100 btn btn-outline-primary" data-image="img3.jpg">
+              Uso Idoso
+            </button>
+            <button class="w-100 btn btn-outline-primary" data-image="img4.jpg">
+              Uso PCDs
+            </button>
+            <button class="w-100 btn btn-outline-primary" data-image="img5.jpg">
+              Uso Vale Transporte
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="position-relative link-carteirinha">
+              <img src="/images/public-site/img1.jpg" class="img-fluid w-100 rounded-1" id="imagem-galeria" />
+              <a href="/carteirinha-linhas#carteirinhas-modal"
+                class="position-absolute bottom-0 start-0 mb-3 ms-4 text-secondary">SAIBA MAIS <img
+                  src="/images/public-site/icon-arrow-white.svg" alt="ícone" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const buttons = document.querySelectorAll("#galeria button");
+          const imagemGaleria = document.getElementById("imagem-galeria");
+          let activeButton = document.querySelector("#galeria button.active");
+  
+          buttons.forEach((button) => {
+            button.addEventListener("click", function () {
+              const imageName = this.getAttribute("data-image");
+              imagemGaleria.style.opacity = "0";
+              setTimeout(function () {
+                imagemGaleria.src = "/images/public-site/" + imageName; 
+                imagemGaleria.style.opacity = "1";
+              }, 75);
+  
+              activeButton.classList.remove("active");
+              activeButton.classList.remove("btn-primary");
+              activeButton.classList.add("btn-outline-primary");
+  
+              this.classList.add("active");
+              this.classList.add("btn-primary");
+              this.classList.remove("btn-outline-primary");
+  
+              activeButton = this;
+            });
+          });
+        });
+      </script>
+    </section>
+    <section>
+      <%- include('partials/public-site/hgroup', { 
+        h2title: 'O que você ganha?', 
+        h3title: 'Com a carteirinha STUP você tem <br> diversas facilidades, incluindo:',
+        h4title: 'Diversos benefícios, ganhe praticidade!' 
+      }) %>
+      <div class="container mt-5 px-4">
+        <div class="row">
+          <div class="col-12 col-lg-4">
+            <div class="container row d-flex justify-content-start px-1 mb-3">
+              <div class="d-flex justify-content-center align-items-center mb-3"
+                style=" width: 60px; height: 60px; border: #000000 1.5px solid; border-radius: 360px;">
+                <img src="/images/public-site/icon-fila.svg" alt="ícone" />
+              </div>
+              <div class="d-flex w-auto flex-column justify-content-center px-0">
+                <p class="fs-3 text-dark fw-bold mb-1 ">Adeus à fila</p>
+                <p class="fs-6 text-dark fw-light mb-3">
+                  Com a carteirinha do STUP você pode ganhar tempo, chega de esperar em demoradas filas, é só aproximar.
+                </p>
+              </div>
+            </div>
+            <div class="container row d-flex justify-content-start px-1 mb-3">
+              <div class="d-flex justify-content-center align-items-center mb-3"
+                style=" width: 60px; height: 60px; border: #000000 1.5px solid; border-radius: 360px;">
+                <img src="/images/public-site/icon-bus.svg" alt="ícone" />
+              </div>
+              <div class="d-flex w-auto flex-column justify-content-center px-0">
+                <p class="fs-3 text-dark fw-bold mb-1">Pague barato</p>
+                <p class="fs-6 tex-darkt fw-light mb-3">
+                  Recarregando sua carteirinha, você agiliza a vida do motorista também, além de uma série de
+                  benefícios.
+                </p>
+              </div>
+            </div>
+            <div class="container row d-flex justify-content-start px-1">
+              <div class="d-flex justify-content-center align-items-center mb-3"
+                style=" width: 60px; height: 60px; border: #000000 1.5px solid; border-radius: 360px;">
+                <img src="/images/public-site/icon-card.svg" alt="ícone" />
+              </div>
+              <div class="d-flex w-auto flex-column justify-content-center px-0">
+                <p class="fs-3 text-dark fw-bold  mb-3">Benifícios</p>
+                <p class="fs-6 text-dark fw-light mb-4">
+                  Quer ganhar descontos e isenção da tarifa? Vem pra STUP!
+                </p>
+              </div>
+            </div>
+            <div class="row px-1">
+              <button class="btn btn-primary p-2">
+                <a class="text-secondary fw-bold text-decoration-none" href="/carteirinha-linhas#atendimento-presencial">
+                  PEÇA A SUA
+                </a>
+              </button>
+            </div>
+          </div>
+          <div class="col-12 col-lg-8 mt-5 mt-lg-0 d-flex justify-content-center">
+            <img class="img-fluid " src="/images/public-site/index-banner2.png" alt="banner">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container text-center mt-5 pt-5 mb-5 pb-5">
+        <h2 style="color: #fff; background-color: none; font-style: italic; -webkit-text-stroke: 1px #602E9A"
+          class="fs-0 text-center p-1 ">
+          COM STUP VOCÊ É TUDO
+        </h2>
+      </div>
+    </section>
+    <section>
+      <div class="container ">
+        <div class="row border border-primary border-2 p-2 m-1 m-lg-0">
+          <div class="col-12 col-lg-5 p-4">
+            <h2 class="text text-dark fs-3 fw-bold">Sobrou alguma dúvida?</h2>
+            <h3 class="text text-primary fs-5 fw-light">Estamos aqui pra te ajudar.</h3>
+            <p class="text text-dark fs-5 fw-light">
+              Na central de ajuda você encontra respostas para as suas dúvidas de forma fácil e rápida.
+            </p>
+            <button class="btn btn-primary p-2 mt-2">
+              <a class="text-secondary text-decoration-none fw-bold" href="/central-ajuda">
+                CENTRAL DE AJUDA
+              </a>
+            </button>
+          </div>
+          <div class="col-0 col-lg-2"></div>
+          <div class="col-12 col-lg-5 p-4 text-start text-lg-end">
+            <h2 class="text text-dark fs-3 fw-bold">Prefere ligar pra gente?</h2>
+            <h3 class="text text-primary fs-5 fw-light">Atenciosamente te esperando.</h3>
+            <p class="text text-dark fs-5 fw-light">
+              Se procura agilidade, nós temos o atendimento que você procura, é fácil, basta ligar pra gente.
+            </p>
+            <button class="btn btn-primary p-2 mt-2">
+              <a class="text-secondary fw-bold text-decoration-none" href="tel:+5512997215547">
+                LIGUE AGORA MESMO
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
     <footer>
         <%- include('partials/public-site/footer') %>
