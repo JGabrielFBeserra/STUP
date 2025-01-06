@@ -1,15 +1,19 @@
 <section>
     <div class="container-fluid px-0 w-100 position-relative">
-        <img src="/images/public-site/index-banner1.png" class="img-fluid px-0 w-100" alt="Imagem" />
+        <img src="<%- srctitle %>" class="img-fluid px-0 w-100" alt="Imagem" />
         <div class="d-none d-md-block container position-absolute top-50 start-50 translate-middle">
-            <h2 class="text-secondary fs-2 fw-bold">PODE DIZER ADEUS <br> Á FILA</h2>
-            <h3 class="text-secondary fs-4 fw-light mb-4">Agora você pode recarregar, <br>
-                consultar e solicitar <br>
-                sua carteirinha de <br>
-                ônibus da sua casa.</h3>
-            <button class="btn text-primary fw-bold btn-secondary px-5">
-                <a href="/carteirinha-linhas#atendimento-presencial" class="text-decoration-none">PEÇA A SUA</a>
+            <h2 class="fs-1 fw-bold <%= activePage === 'card' ? 'text-primary' : 'text-secondary' %>">
+                <%- h2title %>
+            </h2>
+            <h3 class="fs-4 fw-light mb-4 <%= activePage === 'card' ? 'text-primary' : 'text-secondary' %>">
+                <%- h3title %>
+            </h3>
+            <button class="btn <%= activePage === 'card' ? 'bg-primary' : 'btn-secondary' %> px-5 mt-3">
+                <a href="/carteirinha-linhas#atendimento-presencial" class="text-decoration-none <%= activePage === 'card' ? 'text-secondary' : '' %>">
+                    <%- atitle %>
+                </a>
             </button>
         </div>
     </div>
 </section>
+
