@@ -1,21 +1,100 @@
 <!DOCTYPE html>
-    <html lang="pt-br">
+<html lang="pt-br">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="/images//public-site/icon-title.svg">
-        <title>STUP</title>
-        <!-- bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <!-- css bootstrap -->
-        <link rel="stylesheet" href="/css/public-site/style.css" />
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/images/public-site/icon-title.svg">
+    <title>STUP</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- css bootstrap -->
+    <link rel="stylesheet" href="/css/public-site/style.css" />
+</head>
 
-    <body>
+<body>
+    <header>
         <%- include('partials/public-site/header') %>
-        <h1>Bem-vindo ao Frontend!</h1>
-    </body>
+    </header>
+    <section>
+        <%- include('partials/public-site/banner', { bannerImage: '/images/public-site/index-banner1.png' ,
+            bannerAlt: 'Imagem' , bannerTitle: 'PODE DIZER ADEUS <br> Á FILA' ,
+            bannerSubtitle: 'Agora você pode recarregar, <br> consultar e solicitar <br> sua carteirinha de <br> ônibus da sua casa.'
+            , bannerButtonLink: '/carteirinha-linhas#atendimento-presencial' , bannerButtonText: 'PEÇA A SUA' }) %>
+    </section>
+    <section>
+        <section>
+            <div class="container mt-5 mb-5 venha-ser">
+              <div class="row">
+                <p class="fs-2 text text-center fw-bold">
+                  Seja STUP com 4 simples passos
+                </p>
+              </div>
+        
+        
+              <div class="container row mt-5">
+                <div class="px-0  col-12 col-md-6 col-lg-3 d-flex justify-content-start">
+                  <div class="">
+                    <img src="/images/public-site/icon-mapa.svg" alt="ícone">
+                  </div>
+        
+                  <div class="d-flex flex-column ps-2 pe-3 mb-3 mb-lg-0 mw-90">
+                    <p class="text fw-bold">Venha pra STUP</p>
+                    <p class="text fw-light">
+                      Forneça seus dados, criamos sua carteirinha STUP pra você.
+                    </p>
+                  </div>
+                </div>
+                <div class="px-0  col-12 col-md-6 col-lg-3 d-flex justify-content-start">
+                  <div class="">
+                    <img src="/images/public-site/icon-person.svg" alt="ícone">
+                  </div>
+        
+                  <div class="d-flex flex-column ps-2 pe-3 mb-3 mb-lg-0 mw-90 text-dark">
+                    <p class="text fw-bold">Entre na sua conta</p>
+                    <p class="text fw-light">
+                      No site, você recarrega e consulta quando quiser.
+                    </p>
+                  </div>
+                </div>
+                <div class="px-0 col-12 col-md-6 col-lg-3 d-flex justify-content-start">
+                  <div class="">
+                    <img src="/images/public-site/icon-storm.svg" alt="ícone">
+                  </div>
+        
+                  <div class="d-flex flex-column ps-2 pe-3 mb-3 mb-lg-0 mw-90 text-dark">
+                    <p class="text fw-bold">Tudo é Fácil</p>
+                    <p class="text fw-light">
+                      Trilhe sua rotina com muito mais facilidade apartir de agora.
+                    </p>
+                  </div>
+                </div>
+                <div class="px-0 col-12 col-md-6 col-lg-3 d-flex justify-content-start">
+                  <div class="">
+                    <img src="/images/public-site/icon-heart.svg" alt="ícone">
+                  </div>
+        
+                  <div class="d-flex flex-column ps-2 mb-3 mb-lg-0 mw-90 text-dark">
+                    <p class="text fw-bold">Curta as Vantagens</p>
+                    <p class="text fw-light">
+                      Tudo agora é mais rápido com sua linda e ágil carteirinha STUP.
+                    </p>
+                  </div>
+                </div>
+                <div class="text-center justify-content-center align-items-center mt-4 d-flex link-venha-ser">
+                  <a class="text-decoration-underline text-dark" href="/carteirinha-linhas#atendimento-presencial">
+                    Quero ser STUP</a>
+                  <img class="px-2" src="/images/public-site/icon-arrow.svg" alt="ícone" />
+                </div>
+              </div>
+            </div>
+          </section>
+    </section>
+    <footer>
+        <%- include('partials/public-site/footer') %>
+    </footer>
+    
+</body>
 
-    </html>
+</html>
