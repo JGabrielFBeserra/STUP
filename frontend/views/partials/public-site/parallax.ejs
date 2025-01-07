@@ -1,0 +1,31 @@
+<section class="parallax-container pt-5 pb-5">
+    <div class="container pt-5 pb-5">
+        <div class="<%- ['business', 'app'].includes(activePage) ? 'center' : 'left' %>">
+            <h2 class="text-secondary fs-3 fw-bold "><%- h2title -%></h2>
+            <h3 class="text-secondary fs-5 fw-secondary   mb-4"><%- h3title -%></h3>
+            <button class="btn text-primary fw-bold btn-secondary px-5">
+                <a class="text-decoration-none" href="#atendimento-presencial"><%- atitle -%></a>
+            </button>
+        </div>
+    </div>
+</section>
+
+
+
+<style>
+    .parallax-container {
+  background-image: url('<%- srctitle %>');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: auto;
+  /* Adicione o padding necessário para o conteúdo */
+}
+
+/* Estilo para o conteúdo dentro do contêiner parallax */
+.parallax-content {
+  color: #fff;
+  text-align: center;
+}
+</style>
