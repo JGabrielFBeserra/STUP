@@ -19,10 +19,32 @@
 
     <body>
         <%- include('partials/public-site/header') %>
-        <h1>Bem-vindo ao Frontend!</h1>
-        <footer>
+        <%- include('partials/public-site/banner', { 
+            srctitle: '/images/public-site/app-banner1.png',
+            h2title: 'O APP STUP FOI <br>FEITO PARA VOCÊ!',
+            h3title: 'Ainda não possuimos aplicativo, <br> Em breve almejamos implementá-lo.',
+            atitle: '',
+        }) %>
+
+
+            <%- include('partials/public-site/banner-3txt-foto', {
+                h1title: 'O melhor e mais rápido <br> aplicativo que você pode ter! <br> Em breve...',
+                h2title: '',
+                h3title: '',
+                h4title: 'O aplicativo STUP foi feito para facilitar ainda mais do que o nosso site facilita, nele você vai ter praticidade, além de todos os benefícios que já oferecemos pelo site.',
+                atitle: '',
+                srctitle: '/images/public-site/app-banner2.png',
+                srctitle2: '/images/public-site/app-banner2.png',}) %>
+            <%- include('partials/public-site/parallax', {
+                h2title: 'O APP STUP FOI <br>FEITO PARA VOCÊ!',
+                h3title: 'Ainda não possuimos aplicativo, <br> Em breve almejamos implementá-lo.',
+                atitle: '',
+                srctitle: '/images/public-site/app-banner3.png',
+                align: 'center',
+            
+            })%>
+            <%- include('partials/public-site/question') %>
             <%- include('partials/public-site/footer') %>
-        </footer>
-    </body>
+        </body>
 
     </html>

@@ -20,10 +20,22 @@
 
     <body>
         <%- include('partials/public-site/header') %>
-        <h1>Bem-vindo ao Frontend!</h1>
-        <footer>
-            <%- include('partials/public-site/footer') %>
-        </footer>
+        <%- include('partials/public-site/banner', { 
+            srctitle: '/images/public-site/service-banner1.png',
+            h2title: 'ESTAMOS AQUI PRA SEMPRE <br> AJUDAR VOCÊ!',
+            h3title: 'Agora você pode recarregar, <br>Estamos aqui para tirar todas as suas dúvidas, <br>sobre recarga, consulta e criação da carteirinha. <br> Se não achou oque procura nos artigos, consulte <br>abaixo nossas outras formas de ajudar você.', 
+            atitle: 'INICIAR ATENDIMENTO',
+        }) %>
+        <%- include('partials/public-site/banner-3txt-foto', {
+            h1title: 'ATENDIMENTO NA HORA É AQUI!',
+            h2title: '',
+            h3title: '',
+            h4title: 'Estamos disponíveis no WhatsApp todos os dias durante 24h por dia para autoatendimento. Para outros atendimentos, de segunda a sexta, das 8h às 20h e sábados das 8h às 14h. Basta adicionar o número (12) 3333-2222 em sua agenda ou clicar no botão abaixo para iniciar uma conversa.',
+            atitle: 'INICIAR ATENDIMENTO',
+            srctitle: '/images/public-site/service-banner2.png',
+            srctitle2: '/images/public-site/service-banner3.png',})
+        %>
+        <%- include('partials/public-site/footer') %>
         
     </body>
 

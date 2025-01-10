@@ -15,7 +15,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {res.render('public-index', { activePage: 'index' });});
 app.get('/card', (req, res) => {res.render('public-card', { activePage: 'card' });});
 app.get('/consult', (req, res) => { res.render('public-consult', { activePage: 'consult' });});
-app.get('/routes', (req, res) => { res.render('public-routes', { activePage: 'routes' });});
 app.get('/consult', (req, res) => { res.render('public-consult', { activePage: 'consult' });});
 app.get('/app', (req, res) => { res.render('public-app', { activePage: 'app' });});
 app.get('/service', (req, res) => { res.render('public-service', { activePage: 'service' });});
