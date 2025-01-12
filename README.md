@@ -1,178 +1,171 @@
 # STUP
-Este repositório contém o código-fonte de um sistema de gerenciamento de transporte público, desenvolvido para otimizar o controle de ônibus, tarifas, e cadastro de passageiros. 
+Este repositório contém o código-fonte de um sistema de gerenciamento de transporte público, desenvolvido para otimizar o controle de ônibus, tarifas, e cadastro de passageiros.
 
 Demonstração das Sprints que criei para melhor estruturação e organização do projeto como um todo.
 
-### **Sprint 1: Planejamento, Estrutura Inicial e Desenvolvimento do Public-Site (Frontend)**  
+---
 
-**Objetivos**:  
+### **Sprint 1: Planejamento, Estrutura Inicial e Desenvolvimento do Public-Site (Frontend)**
 
-- **Configuração do Ambiente de Desenvolvimento**:  
-  - Configurar o repositório Git e criar um `.gitignore`.  
-  - Instalar dependências básicas: `express`, `ejs`, `dotenv`, `nodemon`.  
-  - Configurar o ambiente para desenvolvimento com `nodemon` para atualização automática.  
+**Objetivos**:
 
-- **Estrutura do Projeto**:  
-  - Criar a estrutura de pastas para Public-Site (`views` e `public`), Administração e BusTurnstile.  
-  - Organizar rotas básicas para Public-Site e Administração no servidor Express.  
+- **Configuração do Ambiente de Desenvolvimento**:
+  - Configurar o repositório Git e criar um `.gitignore`.
+  - Instalar dependências básicas: `express`, `ejs`, `dotenv`, `nodemon`.
+  - Configurar o ambiente para desenvolvimento com `nodemon` para atualização automática.
 
-- **Banco de Dados**:  
-  - Criar o banco de dados `stup_database` no MySQL.  
-  - Configurar o Prisma e criar o schema das tabelas iniciais (usuários, cartões, motoristas, ônibus, linhas, viagens, e a tabela `usuarioviagem`).  
-  - Executar `npx prisma db push` para sincronizar as tabelas no banco de dados.  
+- **Estrutura do Projeto**:
+  - Criar a estrutura de pastas para Public-Site (`views` e `public`), Administração e BusTurnstile.
+  - Organizar rotas básicas para Public-Site e Administração no servidor Express.
 
-**Desenvolvimento das Páginas Estáticas do Public-Site**:  
-- Criar as páginas estáticas utilizando EJS:  
-  - **Index**: página inicial com informações gerais e CTA para login.  
-  - **Card**: informações sobre como criar ou usar o cartão STUP.  
-  - **Business**: informações sobre a empresa.  
-  - **Routes**: listagem estática de rotas e horários iniciais.  
-  - **App**: informações sobre como acessar o app ou outras funcionalidades online.  
-  - **About**: página sobre a empresa e sua história.  
-  - **Help**: página de suporte ao usuário.  
+- **Banco de Dados**:
+  - Criar o banco de dados `stup_database` no MySQL.
+  - Configurar o Prisma e criar o schema das tabelas iniciais (usuários, cartões, motoristas, ônibus, linhas, viagens, e a tabela `usuarioviagem`).
+  - Executar `npx prisma db push` para sincronizar as tabelas no banco de dados.
 
-- Adicionar um layout base para todas as páginas com cabeçalho e rodapé reutilizáveis.  
-- Configurar arquivos estáticos (CSS, imagens, scripts) na pasta `public`.  
+**Desenvolvimento das Páginas Estáticas do Public-Site**:
+- Criar as páginas estáticas utilizando EJS:
+  - **Index**: página inicial com informações gerais e CTA para login.
+  - **Card**: informações sobre como criar ou usar o cartão STUP.
+  - **Business**: informações sobre a empresa.
+  - **Routes**: listagem estática de rotas e horários iniciais.
+  - **App**: informações sobre como acessar o app ou outras funcionalidades online.
+  - **About**: página sobre a empresa e sua história.
+  - **Help**: página de suporte ao usuário.
 
-**Entregas da Sprint**:  
-- Ambiente de desenvolvimento configurado e repositório preparado.  
-- Estrutura básica do projeto organizada com rotas e pastas.  
-- Banco de dados configurado com tabelas iniciais.  
-- Páginas estáticas do Public-Site criadas e navegáveis.  
-- Layout base implementado para o Public-Site.  
+- Adicionar um layout base para todas as páginas com cabeçalho e rodapé reutilizáveis.
+- Configurar arquivos estáticos (CSS, imagens, scripts) na pasta `public`.
+
+**Entregas da Sprint**:
+- Ambiente de desenvolvimento configurado e repositório preparado.
+- Estrutura básica do projeto organizada com rotas e pastas.
+- Banco de dados configurado com tabelas iniciais.
+- Páginas estáticas do Public-Site criadas e navegáveis.
+- Layout base implementado para o Public-Site.
 
 ---
 
-### **Sprint 2: Desenvolvimento do Public-Site (Frontend) - Funcionalidades Interativas e Integração com Backend**  
+### **Sprint 2: Estruturação do Template Administrativo e Layouts Principais**
 
-**Objetivos**:  
+**Objetivos**:
 
-- **Funcionalidades Interativas no Public-Site**:  
-  - Implementar a funcionalidade de **login** com autenticação no frontend.  
-  - Implementar a página de **consulta** de saldo e histórico do cartão, com integração backend para mostrar dados do usuário.  
-  - Criar a funcionalidade para **desativação de cartão** e validações no frontend.  
+- Escolher o template para o painel administrativo e convertê-lo para EJS.
+- Estruturar os layouts principais, como:
+  - **Home da Dashboard**: layout inicial com estatísticas e atalhos.
+  - **Páginas de Cadastro**: criação de layouts para cadastro de funcionário, motorista, usuário, ônibus e cartão, com validação de campos utilizando Zod.
+  - **Páginas de Listagem**: visualização de listas de funcionários, motoristas, usuários, ônibus e cartões.
 
-- **Integração com o Backend (API)**:  
-  - Criar rotas para o backend no Express para autenticação e manipulação de dados do usuário.  
-  - Configurar o envio e recebimento de dados via `axios` para as interações do front-end com o backend.  
-
-- **Finalização das Páginas e Funcionalidades Restantes**:  
-  - Criar o design das páginas **consultar cartão**, **recarga de cartão** e **login** com as validações de campos no frontend.  
-  - Adicionar interatividade, como modais de erro e sucesso, para uma melhor experiência do usuário.  
-
-**Entregas da Sprint**:  
-- Páginas interativas implementadas (login, consulta de cartão, desativação de cartão).  
-- Backend e frontend integrados com API de autenticação e manipulação de dados do usuário.  
-- Funcionalidades de login e consulta funcionando conforme esperado.
+**Entregas da Sprint**:
+- Template administrativo escolhido e convertido para EJS.
+- Layouts principais estruturados com validações de campos em formulários.
 
 ---
 
-### **Sprint 3: Desenvolvimento do Backend (Administração) - Parte 1**  
+### **Sprint 2.1: Desenvolvimento do Backend e Funcionalidades CRUD**
 
-**Objetivos**:  
+**Objetivos**:
 
-- **API de Autenticação e Administração**:  
-  - Criar a API para autenticação do administrador no backend (login do funcionário).  
-  - Criar funcionalidades de cadastro de **funcionários**, **motoristas** e **usuários** (CRUD).  
-  - Implementar validação de dados (como CPF único e validado).  
+- Implementar o backend para os CRUDs das entidades:
+  - **Funcionário, Motorista, Usuário, Ônibus e Cartão**:
+    - Cadastrar, editar, listar, visualizar e excluir.
+    - Implementar upload e armazenamento de fotos no banco de dados para Funcionário, Motorista e Usuário.
 
-- **Funcionalidades de Cadastro de Usuário**:  
-  - Implementar a parte de cadastro de usuário, onde o funcionário pode cadastrar os dados e vincular um cartão ao usuário.  
-  - Garantir que o cadastro de usuário seja feito apenas via interface administrativa, e não pelo público.  
+- Integrar os layouts administrativos com as APIs de backend para operações de CRUD.
 
-**Entregas da Sprint**:  
-- API de autenticação para administradores (funcionários) implementada.  
-- Funcionalidades CRUD para funcionários, motoristas e usuários criadas.
+**Entregas da Sprint**:
+- Backend implementado para todas as entidades com funcionalidade completa de CRUD.
+- Integração entre frontend e backend realizada.
 
 ---
 
-### **Sprint 4: Desenvolvimento do Backend (Administração) - Parte 2**  
+### **Sprint 3: Login e Funcionalidades no Public-Site**
 
-**Objetivos**:  
+**Objetivos**:
 
-- **Cadastro de Itens no Sistema**:  
-  - Implementar CRUD para **ônibus**, **linhas** e **cartões**.  
-  - Associar cada ônibus a uma linha e motorista.  
+- Implementar o login do usuário no Public-Site utilizando credenciais (login e senha).
+- Criar as funcionalidades:
+  - **Recarregar Cartão**: integração com backend para recarga de saldo.
+  - **Bloqueio de Cartão**: permitir que o usuário bloqueie seu cartão por motivos de segurança.
 
-- **Dashboard e Relatórios Iniciais**:  
-  - Criar um painel administrativo básico para visualizar o número de motoristas, funcionários, usuários, e ônibus cadastrados.  
-  - Implementar a visualização de relatórios básicos.  
-
-**Entregas da Sprint**:  
-- Funcionalidades CRUD para ônibus, linhas e cartões implementadas.  
-- Dashboard básico com estatísticas dos itens cadastrados (motoristas, usuários, etc).  
+**Entregas da Sprint**:
+- Login funcional para usuários no Public-Site.
+- Funcionalidades de recarga e bloqueio de cartões implementadas e integradas.
 
 ---
 
-### **Sprint 5: Administração - Relatórios e Funcionalidades Avançadas**  
+### **Sprint 4: Cadastro de Linhas, Turnstile e Funcionalidades no Public-Site**
 
-**Objetivos**:  
+**Objetivos**:
 
-- **Relatórios Avançados**:  
-  - Implementar geração de relatórios mais complexos, como relatórios de viagens, horários e utilização de cartões.  
-  - Criar funcionalidades de exportação de dados (ex: exportar relatório de viagens para CSV ou PDF).  
+- **Cadastro de Linhas**:
+  - Implementar o cadastro de linhas no sistema administrativo.
+  - Gerar PDFs com horários das linhas cadastradas.
 
-- **Relação de Viagens e Passageiros**:  
-  - Criar a relação entre **viagens** e os **usuários** que participaram das viagens.  
-  - Associar motoristas, ônibus e linhas nas viagens, com os respectivos horários.  
+- **Interface Turnstile**:
+  - Criar interface com diferentes fluxos de funcionamento:
+    - Cartão com saldo suficiente.
+    - Cartão sem saldo.
+    - Cartão com tipo específico (ex.: estudante).
+    - Erro ao validar cartão.
 
-**Entregas da Sprint**:  
-- Relatórios avançados implementados.  
-- Relação de viagens e passageiros configurada no backend.  
+- **Public-Site**:
+  - Puxar informações das linhas cadastradas para exibição.
+  - Permitir upload e consulta dos PDFs de horários no site.
 
----
-
-### **Sprint 6: Desenvolvimento do BusTurnstile (Leitor de Código de Barras)**  
-
-**Objetivos**:  
-
-- **Interface de Catraca**:  
-  - Criar uma interface para a leitura do código de barras do cartão STUP.  
-  - Implementar lógica de validação do cartão, verificando saldo e tipo de cartão.  
-
-- **Integração com Catraca e Backend**:  
-  - Desenvolver a interação com a catraca, validando o saldo do usuário e liberando ou bloqueando o acesso conforme necessário.  
-  - Exibir para o usuário o tipo de cartão, valor cobrado e saldo restante.  
-
-**Entregas da Sprint**:  
-- Interface de leitura de código de barras e catraca desenvolvida.  
-- Integração com o backend para verificar saldo e liberar o acesso.  
+**Entregas da Sprint**:
+- Cadastro de linhas funcional com geração de PDFs.
+- Interface do Turnstile criada com diferentes fluxos operacionais.
+- Public-Site integrado com dados de linhas e upload de PDFs.
 
 ---
 
-### **Sprint 7: Testes e Ajustes Finais**  
+### **Sprint 5: Funcionalidades do Turnstile e Relatórios**
 
-**Objetivos**:  
+**Objetivos**:
 
-- **Testes e Correção de Bugs**:  
-  - Realizar testes funcionais e de integração (backend, frontend, e BusTurnstile).  
-  - Corrigir bugs encontrados e refinar o comportamento das funcionalidades.  
+- Implementar a funcionalidade do Turnstile:
+  - Cobrar tarifa ao validar o cartão.
+  - Criar o CRUD de viagens e usuários viagem, associando usuários às viagens realizadas.
 
-- **Refinamento de Design e Usabilidade**:  
-  - Ajustar o layout do Public-Site e Administração para ser mais responsivo e amigável.  
-  - Testar em diferentes dispositivos e corrigir problemas de usabilidade.  
+- **Relatórios**:
+  - Desenvolver relatórios administrativos detalhados sobre viagens e utilização de cartões.
+  - Permitir exportação de relatórios em PDF.
 
-**Entregas da Sprint**:  
-- Sistema testado e corrigido.  
-- Layout refinado e responsivo.  
+**Entregas da Sprint**:
+- Turnstile funcional, validando cartões e cobrando tarifas.
+- CRUDs de viagens e usuários viagem implementados.
+- Relatórios administrativos gerados e exportáveis.
+
+---
+
+### **Sprint 6: Gráficos, Design e Logins Administrativos**
+
+**Objetivos**:
+
+- Implementar gráficos na dashboard administrativa para visualização de dados (usuários cadastrados, viagens realizadas, etc.).
+- Melhorar o design geral do sistema administrativo e do Public-Site.
+- Configurar logins diferenciados:
+  - **Administrador Supremo**: pode cadastrar novos funcionários.
+  - **Funcionários Comuns**: acesso limitado sem permissão para criar outros funcionários.
+
+**Entregas da Sprint**:
+- Gráficos na dashboard implementados.
+- Design refinado para todas as interfaces.
+- Logins administrativos configurados com permissões diferenciadas.
 
 ---
 
-### **Sprint 8: Documentação e Preparação para Deploy**  
+### **Sprint 7: Documentação e Apresentação**
 
-**Objetivos**:  
+**Objetivos**:
 
-- **Documentação do Projeto**:  
-  - Escrever a documentação do código, explicando como o sistema foi estruturado.  
-  - Criar um README completo com informações sobre o projeto, como rodar localmente, dependências, etc.  
+- **Documentação**:
+  - Criar uma documentação completa em PDF sobre o sistema, explicando funcionalidades e arquitetura.
 
-- **Preparação para Deploy**:  
-  - Configurar o ambiente de produção (servidor, banco de dados, etc).  
-  - Realizar testes finais de deploy e garantir que o sistema funcione em produção.  
+- **Apresentação**:
+  - Gravar vídeos demonstrando todas as funcionalidades e o fluxo do sistema.
 
-**Entregas da Sprint**:  
-- Documentação completa do projeto.  
-- Ambiente de produção configurado e testes finais realizados.
-
----
+**Entregas da Sprint**:
+- Documentação finalizada e entregue em PDF.
+- Vídeos demonstrativos criados e apresentados.
 
