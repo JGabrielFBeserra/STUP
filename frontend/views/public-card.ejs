@@ -441,15 +441,8 @@
             atitle: 'PEÇA A SUA',
             srctitle: '/images/public-site/card-banner3.png',
         }) %>
-        <%- include('partials/public-site/banner-3txt-foto', {
-            h1title: 'Atendimento Presencial:',
-            h2title: '',
-            h3title: '',
-            h4title: 'Clique no botão abaixo e encontre uma unidade STUP mais próxima de você, lá você pode fornecer seus dados e uma foto, e com isso criamos sua carteirinha para você, apenas consulte o horário de cada unidade, pode variar então é importante checar por qual delas você sera atendido, também verifique os serviços que cada uma oferece, lembrando que até o momento só criamos as carteirinhas via local físico.',
-            atitle: 'ENCONTRE SUA UNIDADE',
-            srctitle: '/images/public-site/card-banner2.png',
-            srctitle2: '/images/public-site/card-banner2.png',
-        }) %>
+        <%- include('partials/public-site/achar-unidade') %>
+               
         <section class="pt-5 pb-5">
             <div class="container">
                 <div class="row">
@@ -477,10 +470,7 @@
         <%- include('partials/public-site/question') %>
 
     <%- include('partials/public-site/footer') %>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
-      
+    <script src="/js/imports.js"></script>
 </body>
 
 </html>

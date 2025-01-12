@@ -19,7 +19,7 @@ app.get('/consult', (req, res) => { res.render('public-consult', { activePage: '
 app.get('/app', (req, res) => { res.render('public-app', { activePage: 'app' });});
 app.get('/service', (req, res) => { res.render('public-service', { activePage: 'service' });});
 app.get('/business', (req, res) => { res.render('public-business', { activePage: 'business' });});
-app.get('/about', (req, res) => { res.render('public-card', { activePage: 'about' }); });
+app.get('/about', (req, res) => { res.render('public-about', { activePage: 'about' }); });
 app.get('/help', (req, res) => { res.render('public-help', { activePage: 'help' }); });
 app.get('/login', (req, res) => { res.render('public-login', { activePage: 'consult' }); });
 

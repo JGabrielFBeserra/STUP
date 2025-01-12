@@ -20,10 +20,74 @@
 
     <body>
         <%- include('partials/public-site/header') %>
-        <h1>Bem-vindo ao Frontend!</h1>
-        <footer>
-            <%- include('partials/public-site/footer') %>
-        </footer>
+        <%- include('partials/public-site/banner', { srctitle: '/images/public-site/business-banner1.png' ,
+            h2title: 'FICOU MAIS FÁCIL AJUDAR <br> SEUS FUNCIONÁRIOS <br> E SUA EMPRESA!' ,
+            h3title: 'Garanta os direitos trabalhista para seus  <br> funcionários de maneira rápida e prática,<br>vem com a STUP.' ,
+            atitle: 'CADASTRAR EMPRESA' }) %>
+        <%- include('partials/public-site/banner-3txt-foto', { h1title: 'VALE TRANSPORTE' , h2title: '' ,
+            h3title: '' ,
+            h4title: 'Com a carteirinha da sua empresa cadastrada seus funcionários tem direito a sua carteirinha transporte na hora, assim é cedido o benefício do vale transporte para eles, e sua empresa paga barato e você ganha toda a praticidade e agilidade da STUP.' , atitle: 'CADASTRAR SUA EMPPRESA' , srctitle: '/images/public-site/business-banner2.png' ,
+            srctitle2: '/images/public-site/business-banner2.png' , }) %>
+        </section>
+        <!-- 3 colunas -->
+        <div class="w-auto h-auto pt-5 pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-3 pb-5 pb-lg-0">
+                        <img class="pb-4" src="/images/public-site/icon-clock.svg" alt="ícone">
+                        <h2 class="text-primary fw-bold fs-2 pb-2">Ganhe mais rapidez</h2>
+                        <h3 class="fs-4 fw-light">Usando nossa carteirinha seu funcionário vai perder menos tempos em filas
+                            e ganhar mais
+                            tempo para chegar ao trabalho, bem menos exausto e com bem mais disposição, a STUP visa te dar
+                            tempo
+                            e eficiência.</h3>
+                    </div>
+                    <div class="col-0 col-0 col-lg-1">
+        
+                    </div>
+                    <div class="col-12 col-lg-3 pb-5 pb-lg-0">
+                        <img class="pb-4" src="/images/public-site/icon-dolar.svg" alt="ícone">
+                        <h2 class="text-primary fw-bold fs-2 pb-2">Pague mais barato</h2>
+                        <h3 class="fs-4 fw-light">Com a STUP empresas nós fechamos os passes mais em conta para que as
+                            despesas não sejam
+                            tão incomodantes, aqui na STUP estamos aqui para ajudar sua empresas e seus funcionários sempre
+                            que precisar. </h3>
+                    </div>
+                    <div class="col-0 col-lg-1"></div>
+                    <div class="col-12 col-lg-3">
+                        <img class="pb-4" src="/images/public-site/icon-headset.svg" alt="ícone">
+                        <h2 class="text-primary fw-bold fs-2 pb-2">Atendemos 24 horas</h2>
+                        <h3 class="fs-4 fw-light">Você vai contar com uma equipe de funcionários completos, vão te auxiliar
+                            24 horas por
+                            dia, para poder ajudar sua empresa e tirar todas as suas dúvidas sobre o STUP para Empresas.
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        <%- include('partials/public-site/parallax', { h2title: 'Esperando o que pra ser STUP?!' ,
+            h3title: 'Tudo que sua empresa precisa em apenas <br> um lugar, torne-se um parceiro e desfrute <br>dos benefícios, não perca tempo, ganhe mais <br> com a gente.',
+            atitle: '' , srctitle: '/images/public-site/business-banner4.png' , }) %>
+        <section>
+            <div class="container mt-5 mb-5">
+                <div class="row">
+                    <div class="text-center d-flex justify-content-center ">
+                        <h2 class="fw-medium fs-2 pe-1">Seja mais </h2>
+                        <h2 class="fw-bold fs-2 text-primary"> EFICIENTE! </h2>
+                        <h2 class="fw-medium fs-2 ps-1"> Vire STUP.</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="w-100 position-relative">
+                <img class="w-100" src="/images/public-site/business-banner5.png" alt="banner">
+            </div>
+        </section>
+        <%- include('partials/public-site/question') %>
+        <%- include('partials/public-site/footer') %>
+        
     </body>
 
     </html>

@@ -15,15 +15,72 @@
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <!-- css bootstrap -->
         <link rel="stylesheet" href="/css/public-site/style.css" />
+        <style>
+            /* Custom animation */
+            .fade-in {
+                animation: fadeIn 1.5s ease-in-out;
+            }
+        
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+        
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        
+            .profile-picture {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+        
+            .social-icons a {
+                color: #555;
+                font-size: 24px;
+                margin: 0 10px;
+                transition: transform 0.3s ease, color 0.3s ease;
+            }
+        
+            .social-icons a:hover {
+                color: #007bff;
+                transform: scale(1.2);
+            }
+        </style>
     </head>
 
     <body>
         <%- include('partials/public-site/header') %>
-        <h1>Bem-vindo ao Frontend!</h1>
-        <footer>
-            <%- include('partials/public-site/footer') %>
-        </footer>
+        <div class="container-fluid bg-light py-5">
+            <div class="row align-items-center justify-content-center text-center text-md-start">
+                <!-- Profile Picture -->
+                <div class="col-md-4 text-center mb-3">
+                    <img src="images/public-site/about.jpeg" alt="João Gabriel de Faria Beserra"
+                        class="profile-picture fade-in">
+                </div>
+                <!-- Info -->
+                <div class="col-md-8 fade-in">
+                    <h1 class="display-4 fw-bold">João Gabriel de Faria Beserra</h1>
+                    <p class="lead text-muted">Desenvolvedor Web | Criador de Soluções Digitais</p>
+                    <!-- Social Links -->
+                    <div class="social-icons mt-4">
+                        <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('partials/public-site/footer') %>
 
+        <script src="/js/imports.js"></script>
     </body>
 
     </html>
