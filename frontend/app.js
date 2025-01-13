@@ -23,6 +23,9 @@ app.get('/about', (req, res) => { res.render('public-about', { activePage: 'abou
 app.get('/help', (req, res) => { res.render('public-help', { activePage: 'help' }); });
 app.get('/login', (req, res) => { res.render('public-login', { activePage: 'consult' }); });
 
+// admin-site
+app.get('/admin', (req, res) => { res.render('admin-index', { activePage: 'index' }); });
+
 
 module.exports = app;
 
