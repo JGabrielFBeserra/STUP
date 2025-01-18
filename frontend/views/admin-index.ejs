@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('partials/admin-site/head') %>
+
+    <body>
+        <div class="row d-flex flex-row">
+
+            <div class="col-2 px-0">
+                <%- include('partials/admin-site/sidebar') %>
+            </div>
+            <div class="col-10 px-0">
+                <header class="py-3 mb-4 border-bottom">
+                    <div class="container d-flex flex-wrap justify-content-center">
+                        <a href="/"
+                            class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+                            <span class="fs-4">HOME</span>
+                        </a>
+                        <div class="dropdownw me-4" >
+                            <a href="#"
+                                class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-body-emphasis text-decoration-none dropdown-toggle"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="/images/admin-site/teste.jpg" class="bi me-2 rounded-5" width="50" height="50"></img>
+                            </a>
+                            <ul class="dropdown-menu text-small shadow">
+                                <li><a class="dropdown-item active" href="#" aria-current="page">Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+                <div class="container gap-5 mb-3 d-flex flex-row justify-content-around">
+                    <a href="/" class="col bg-primary rounded-4 metric d-flex align-items-center" style="height: 125px;">
+                        <div class="metric d-flex ps-4 align-items-center">
+                            <span class="icon display-5 me-3">
+                                <i class="fa fa-credit-card text-secondary"></i>
+                            </span>
+                            <div>
+                                <p class="mb-0">
+                                    <span class="title fs-5 text-secondary">Usuários Ativos</span>
+                                </p>
+                                <p class="mb-0">
+                                    <span class="number fs-4 text-secondary" id="cartoesAtivosCount">200</span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                
+                    <!-- Card Lucro Bruto -->
+                    <a href="/" class="col bg-primary rounded-4 metric d-flex align-items-center" style="height: 125px;">
+                        <div class="metric d-flex ps-4 align-items-center">
+                            <span class="icon display-5 me-3">
+                                <i class="fa-solid fa-money-bill text-secondary"></i>
+                            </span>
+                            <div>
+                                <p class="mb-0">
+                                    <span class="title fs-5 text-secondary">Lucro Bruto</span>
+                                </p>
+                                <p class="mb-0">
+                                    <span class="number fs-4 text-secondary">R$ 50.000</span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                
+                    <!-- Card Cartões Bloqueados -->
+                    <a href="/" class="col bg-primary rounded-4 metric d-flex align-items-center" style="height: 125px;">
+                        <div class="metric d-flex ps-4 align-items-center">
+                            <span class="icon display-5 me-3">
+                                <i class="fa-solid fa-lock text-secondary"></i>
+                            </span>
+                            <div>
+                                <p class="mb-0">
+                                    <span class="title fs-5 text-secondary">Cartões Bloqueados</span>
+                                </p>
+                                <p class="mb-0">
+                                    <span class="number fs-4 text-secondary">15</span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                
+                    <!-- Card Motoristas Parceiros -->
+                    <a href="/" class="col bg-primary rounded-4 me-3 metric d-flex align-items-center" style="height: 125px;">
+                        <div class="metric d-flex ps-4 align-items-center">
+                            <span class="icon display-5 me-3">
+                                <i class="fa-solid fa-id-card text-secondary"></i>
+                            </span>
+                            <div>
+                                <p class="mb-0">
+                                    <span class="title fs-5 text-secondary">Motoristas Parceiros</span>
+                                </p>
+                                <p class="mb-0">
+                                    <span class="number fs-4 text-secondary">50</span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="container mb-3">
+                    <div class="row d-flex flex-row">
+
+                        <div class="col-6 d-flex flex-column justify-content-center">
+                            <h1 class="mb-4">Entidades Cadastradas</h1>
+                            <div class="d-flex justify-content-center">
+                                <div class="">
+                                    <div class="chart-container">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                </div>
+                                <!-- Caixinhas pequenas ao lado do gráfico -->
+                                <div class="d-flex flex-column justify-content-center align-items-start ms-4">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="indicator-box"
+                                            style="background-color: #602e9a; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></span>
+                                        <span>Motoristas: <span id="motoristasCountBox">300</span></span>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="indicator-box"
+                                            style="background-color: #3f196b; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></span>
+                                        <span>Usuários: <span id="usuariosCountBox">50</span></span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="indicator-box"
+                                            style="background-color: #a87ed8; width: 20px; height: 20px; display: inline-block; margin-right: 10px;"></span>
+                                        <span>Ônibus: <span id="onibusCountBox">100</span></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-6 mt-5">
+                            <h1 class="mb-4">Últimos Cadastros</h1>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Cartão</th>
+                                        <th scope="col">Saldo</th>
+                                        <th scope="col">Nascimento</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        
+                                        <td>João Silva</td>
+                                        <td>Comum</td>
+                                        <td>R$ 45,00</td>
+                                        <td>1990-05-15</td>
+                                    </tr>
+                                    <tr>
+                                        
+                                        <td>Maria Oliveira</td>
+                                        <td>Estudante</td>
+                                        <td>R$ 20,00</td>
+                                        <td>2002-11-08</td>
+                                    </tr>
+                                    <tr>
+                                       
+                                        <td>Carlos Souza</td>
+                                        <td>Idoso</td>
+                                        <td>R$ 0,00</td>
+                                        <td>1950-06-21</td>
+                                    </tr>
+                                    <tr>
+                                       
+                                        <td>Fernanda Costa</td>
+                                        <td>Estudante</td>
+                                        <td>R$ 100,00</td>
+                                        <td>2005-02-17</td>
+                                    </tr>
+                                    <tr>
+                                       
+                                        <td>Lucas Ferreira</td>
+                                        <td>Comum</td>
+                                        <td>R$ 30,00</td>
+                                        <td>1985-07-23</td>
+                                    </tr>
+                                    <tr>
+                                      
+                                        <td>Ana Santos</td>
+                                        <td>Idoso</td>
+                                        <td>R$ 10,00</td>
+                                        <td>1945-12-04</td>
+                                    </tr>
+                                    <tr>
+                                       
+                                        <td>Pedro Lima</td>
+                                        <td>Comum</td>
+                                        <td>R$ 75,00</td>
+                                        <td>1998-09-14</td>
+                                    </tr>
+                                </tbody>
+                                
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+               
+                <%- include('partials/admin-site/footer') %>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/66b39b2469.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            // Dados iniciais do gráfico
+            const data = {
+                labels: ['Motoristas', 'Usuários', 'Ônibus'], // Rótulos das fatias
+                datasets: [{
+                    label: 'Entidades Cadastradas',
+                    data: [300, 50, 100], // Valores das fatias
+                    backgroundColor: ['#602e9a', '#3f196b', '#a87ed8'], // Cores das fatias
+                    hoverOffset: 4
+                }]
+            };
+
+            // Configuração do gráfico
+            const config = {
+                type: 'pie',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false // Oculta a legenda do gráfico
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw + ' unidades';
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            // Criar o gráfico
+            const ctx = document.getElementById('myPieChart').getContext('2d');
+            const myPieChart = new Chart(ctx, config);
+
+            // Função para atualizar os valores das caixinhas
+            function updateBoxValues() {
+                document.getElementById('motoristasCountBox').textContent = data.datasets[0].data[0];
+                document.getElementById('usuariosCountBox').textContent = data.datasets[0].data[1];
+                document.getElementById('onibusCountBox').textContent = data.datasets[0].data[2];
+            }
+
+            // Atualizar os valores das caixinhas inicialmente
+            updateBoxValues();
+        </script>
+
+
+    </body>
+
+</html>
