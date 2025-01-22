@@ -19,7 +19,6 @@ exports.createCard = async (req, res) => {
         cartao: cartao,
       });
     } catch (error) {
-      // Se ocorrer erro de validação ou outro erro
       if (error.errors) {
         return res.status(400).json({
           mensagem: 'Erro de validação',

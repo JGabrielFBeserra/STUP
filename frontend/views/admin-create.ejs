@@ -150,38 +150,33 @@
             <%- include('partials/admin-site/footer') %>
         </div>
         </div>
-        <!-- Adiciona um container para mostrar os alertas -->
-<div id="alertContainer" class="container mt-3"></div>
+      
+        <div id="alertContainer" class="container mt-3"></div>
 
 <script>
-  // Obtém os elementos do formulário
+  // elementos formulário
   const cardForm = document.getElementById('cardForm');
   const saldoInput = document.getElementById('saldo');
   const tipoCartaoSelect = document.getElementById('tipoCartao');
   const submitBtn = document.getElementById('submitBtn');
   const alertContainer = document.getElementById('alertContainer');
   
-  // Função para verificar se os campos estão preenchidos
-  function validateForm() {
+    function validateForm() {
     const saldoValue = saldoInput.value.trim();
     const tipoCartaoValue = tipoCartaoSelect.value;
   
-    // Verifica se ambos os campos estão preenchidos
-    if (saldoValue && tipoCartaoValue !== "4") {
-      submitBtn.disabled = false;  // Habilita o botão de submit
+    if (saldoValue) {
+      submitBtn.disabled = false;  
     } else {
-      submitBtn.disabled = true;   // Desabilita o botão de submit
+      submitBtn.disabled = true;
     }
   }
   
-  // Adiciona event listeners para verificar se os campos estão preenchidos
   saldoInput.addEventListener('input', validateForm);
   tipoCartaoSelect.addEventListener('change', validateForm);
-  
-  // Inicializa a validação ao carregar a página
   window.onload = validateForm;
   
-  // Função para exibir alertas de sucesso ou erro
+  // exibir alertas de sucesso ou erro
   function showAlert(message, type) {
     const alertDiv = document.createElement('div');
     alertDiv.classList.add('alert', `alert-${type}`, 'alert-dismissible', 'fade', 'show');
@@ -191,33 +186,27 @@
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     `;
     alertContainer.appendChild(alertDiv);
-    
-    // Remove o alerta após 5 segundos
     setTimeout(() => {
       alertDiv.classList.remove('show');
       setTimeout(() => {
         alertDiv.remove();
-      }, 500);  // Tempo para animação de fechamento
+      }, 500);  
     }, 5000);
   }
   
-  // Adiciona o evento de submit no formulário
+
   cardForm.addEventListener('submit', async (event) => {
-    // Previne o comportamento padrão do formulário (recarregar a página)
+ 
     event.preventDefault();
-  
-    // Obtém os valores dos campos
     const saldo = saldoInput.value;
     const tipoCartao = tipoCartaoSelect.value;
   
-    // Cria o objeto de dados a ser enviado
     const data = {
-      saldo: parseFloat(saldo),  // Converte o saldo para número
-      tipoCartao: parseInt(tipoCartao),  // Converte o tipoCartao para número inteiro
+      saldo: parseFloat(saldo), 
+      tipoCartao: parseInt(tipoCartao),  
     };
   
     try {
-      // Envia os dados para a API usando fetch
       const response = await fetch('http://localhost:3000/api/card', {
         method: 'POST',
         headers: {
@@ -226,10 +215,9 @@
         body: JSON.stringify(data),
       });
   
-      // Verifica se a resposta da API foi bem-sucedida
       if (response.ok) {
         const result = await response.json();
-        showAlert(result.mensagem, 'success');  // Exibe o alerta de sucesso
+        showAlert(result.mensagem, 'success'); 
       } else {
         const error = await response.json();
   
