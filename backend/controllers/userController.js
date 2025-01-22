@@ -2,7 +2,7 @@
 
 // Simulação de banco de dados
 let users = [
-    { id: 1, name: 'João', email: 'joao@example.com' },
+    { id: 1, name: 'Casmita Nike', email: 'R$ 10.00' },
     { id: 2, name: 'Maria', email: 'maria@example.com' },
   ];
   

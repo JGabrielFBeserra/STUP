@@ -25,6 +25,14 @@ app.get('/login', (req, res) => { res.render('public-login', { activePage: 'cons
 
 // admin-site
 app.get('/admin', (req, res) => {res.render('admin-index', { activePage: 'index' }); });
+app.get('/admin/create/user', (req, res) => {res.render('admin-create', { activePage: 'user' }); });
+app.get('/admin/create/card', (req, res) => {res.render('admin-create', { activePage: 'card' }); });
+app.get('/admin/create/driver', (req, res) => {res.render('admin-create', { activePage: 'driver' }); });
+app.get('/admin/create/bus', (req, res) => {res.render('admin-create', { activePage: 'bus' }); });
+app.get('/admin/create/route', (req, res) => {res.render('admin-create', { activePage: 'route' }); });
+app.get('/admin/create/func', (req, res) => {res.render('admin-create', { activePage: 'func' }); });
+
+
 
 
 

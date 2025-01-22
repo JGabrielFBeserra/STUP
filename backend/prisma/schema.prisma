@@ -10,8 +10,8 @@ datasource db {
 model cartao {
   id      Int      @id @default(autoincrement())
   saldo   Float?   @db.Float
-  tipo    String?  @db.VarChar(255)
-  status  Boolean?
+  tipo    Int?     // ou String?, dependendo do seu desejo
+  status  Boolean? @default(true)  // Definindo o valor padrão como 'true'
   usuario usuario?
 }
 

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('partials/admin-site/head') %>
+
+    <body>
+        <div class="row d-flex flex-row">
+
+            <div class="col-2 px-0">
+                <%- include('partials/admin-site/sidebar') %>
+            </div>
+
+
+            <div class="col-10 px-0">
+                <header class="py-3 mb-4 border-bottom">
+                    <div class="container d-flex flex-wrap justify-content-center">
+                        <a href="/"
+                            class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+                            <span class="fs-4">
+                                <%= activePage==='user' ? 'Cadastro Usuário' : '' %>
+                                    <%= activePage==='card' ? 'Cadastro Cartão' : '' %>
+                                        <%= activePage==='driver' ? 'Cadastro Motorista' : '' %>
+                                            <%= activePage==='func' ? 'Cadastro Funcionário' : '' %>
+                                                <%= activePage==='route' ? 'Cadastro Linha' : '' %>
+                                                    <%= activePage==='bus' ? 'Cadastro Ônibus' : '' %>
+                            </span>
+                        </a>
+
+                        <div class="dropdownw me-4">
+                            <a href="#"
+                                class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-body-emphasis text-decoration-none dropdown-toggle"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="/images/admin-site/teste.jpg" class="bi me-2 rounded-5" width="50"
+                                    height="50"></img>
+                            </a>
+                            <ul class="dropdown-menu text-small shadow">
+                                <li><a class="dropdown-item active" href="#" aria-current="page">Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="container">
+                    <div id="alertContainer" class="mt-3 position-relative"></div>
+                    <div class="row">
+                        <div class="col-5">
+                            <% if (activePage==='card' ) { %>
+                                <form id="cardForm">
+                                    <div class="input-group">
+                                      <span class="input-group-text" for="saldo">Saldo</span>
+                                      <input type="number" id="saldo" class="form-control" placeholder="">
+                                    </div>
+                                    <hr>
+                                    <div class="input-group mb-3">
+                                      <label class="input-group-text" for="inputGroupSelect01">Tipo de Cartão</label>
+                                      <select class="form-select" id="tipoCartao">
+                                        <option value="4">Escolher...</option>
+                                        <option value="1">Comum</option>
+                                        <option value="2">Estudante</option>
+                                        <option value="3">Idoso</option>
+                                      </select>
+                                    </div>
+                                    <hr>
+                                    <input type="submit" value="Cadastrar" class="btn btn-primary" id="submitBtn" disabled>
+                                  </form>
+                                  
+
+                                <% } %>
+
+                                    <% if (activePage==='user' ) { %>
+                                        <form>
+                                            <!-- Formulário de Cadastro de Usuário -->
+                                            <input type="text" class="form-control" placeholder="Nome">
+                                            <hr>
+                                            <input type="email" class="form-control" placeholder="Email">
+                                            <hr>
+                                            <input type="submit" value="Cadastrar Usuário" class="btn btn-primary">
+                                        </form>
+                                        <% } %>
+
+                                            <% if (activePage==='funcionario' ) { %>
+                                                <form>
+                                                    <!-- Formulário de Cadastro de Funcionário -->
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Nome do Funcionário">
+                                                    <hr>
+                                                    <input type="text" class="form-control" placeholder="Cargo">
+                                                    <hr>
+                                                    <input type="submit" value="Cadastrar Funcionário"
+                                                        class="btn btn-primary">
+                                                </form>
+                                                <% } %>
+
+                                                    <% if (activePage==='motorista' ) { %>
+                                                        <form>
+                                                            <!-- Formulário de Cadastro de Motorista -->
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Nome do Motorista">
+                                                            <hr>
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Número da CNH">
+                                                            <hr>
+                                                            <input type="submit" value="Cadastrar Motorista"
+                                                                class="btn btn-primary">
+                                                        </form>
+                                                        <% } %>
+
+                                                            <% if (activePage==='linha' ) { %>
+                                                                <form>
+                                                                    <!-- Formulário de Cadastro de Linha -->
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Número da Linha">
+                                                                    <hr>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Descrição da Linha">
+                                                                    <hr>
+                                                                    <input type="submit" value="Cadastrar Linha"
+                                                                        class="btn btn-primary">
+                                                                </form>
+                                                                <% } %>
+
+                                                                    <% if (activePage==='onibus' ) { %>
+                                                                        <form>
+                                                                            <!-- Formulário de Cadastro de Ônibus -->
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Número do Ônibus">
+                                                                            <hr>
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Modelo">
+                                                                            <hr>
+                                                                            <input type="submit"
+                                                                                value="Cadastrar Ônibus"
+                                                                                class="btn btn-primary">
+                                                                        </form>
+                                                                        <% } %>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+            <%- include('partials/admin-site/footer') %>
+        </div>
+        </div>
+        <!-- Adiciona um container para mostrar os alertas -->
+<div id="alertContainer" class="container mt-3"></div>
+
+<script>
+  // Obtém os elementos do formulário
+  const cardForm = document.getElementById('cardForm');
+  const saldoInput = document.getElementById('saldo');
+  const tipoCartaoSelect = document.getElementById('tipoCartao');
+  const submitBtn = document.getElementById('submitBtn');
+  const alertContainer = document.getElementById('alertContainer');
+  
+  // Função para verificar se os campos estão preenchidos
+  function validateForm() {
+    const saldoValue = saldoInput.value.trim();
+    const tipoCartaoValue = tipoCartaoSelect.value;
+  
+    // Verifica se ambos os campos estão preenchidos
+    if (saldoValue && tipoCartaoValue !== "4") {
+      submitBtn.disabled = false;  // Habilita o botão de submit
+    } else {
+      submitBtn.disabled = true;   // Desabilita o botão de submit
+    }
+  }
+  
+  // Adiciona event listeners para verificar se os campos estão preenchidos
+  saldoInput.addEventListener('input', validateForm);
+  tipoCartaoSelect.addEventListener('change', validateForm);
+  
+  // Inicializa a validação ao carregar a página
+  window.onload = validateForm;
+  
+  // Função para exibir alertas de sucesso ou erro
+  function showAlert(message, type) {
+    const alertDiv = document.createElement('div');
+    alertDiv.classList.add('alert', `alert-${type}`, 'alert-dismissible', 'fade', 'show');
+    alertDiv.setAttribute('role', 'alert');
+    alertDiv.innerHTML = `
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+    alertContainer.appendChild(alertDiv);
+    
+    // Remove o alerta após 5 segundos
+    setTimeout(() => {
+      alertDiv.classList.remove('show');
+      setTimeout(() => {
+        alertDiv.remove();
+      }, 500);  // Tempo para animação de fechamento
+    }, 5000);
+  }
+  
+  // Adiciona o evento de submit no formulário
+  cardForm.addEventListener('submit', async (event) => {
+    // Previne o comportamento padrão do formulário (recarregar a página)
+    event.preventDefault();
+  
+    // Obtém os valores dos campos
+    const saldo = saldoInput.value;
+    const tipoCartao = tipoCartaoSelect.value;
+  
+    // Cria o objeto de dados a ser enviado
+    const data = {
+      saldo: parseFloat(saldo),  // Converte o saldo para número
+      tipoCartao: parseInt(tipoCartao),  // Converte o tipoCartao para número inteiro
+    };
+  
+    try {
+      // Envia os dados para a API usando fetch
+      const response = await fetch('http://localhost:3000/api/card', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      // Verifica se a resposta da API foi bem-sucedida
+      if (response.ok) {
+        const result = await response.json();
+        showAlert(result.mensagem, 'success');  // Exibe o alerta de sucesso
+      } else {
+        const error = await response.json();
+  
+        // Exibe todos os erros de validação
+        if (error.erros) {
+          let errorMessage = '';
+          error.erros.forEach(err => {
+            errorMessage += `${err.message}<br>`;  // Adiciona cada erro ao errorMessage
+          });
+          showAlert(errorMessage, 'danger');  // Exibe o alerta de erro
+        } else {
+          showAlert(`Erro: ${error.mensagem}`, 'danger');  // Exibe a mensagem de erro geral
+        }
+      }
+    } catch (error) {
+      showAlert("Erro ao enviar os dados para a API.", 'danger');
+      console.error(error);
+    }
+  });
+</script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/66b39b2469.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            // Dados iniciais do gráfico
+            const data = {
+                labels: ['Motoristas', 'Usuários', 'Ônibus'], // Rótulos das fatias
+                datasets: [{
+                    label: 'Entidades Cadastradas',
+                    data: [300, 50, 100], // Valores das fatias
+                    backgroundColor: ['#602e9a', '#3f196b', '#a87ed8'], // Cores das fatias
+                    hoverOffset: 4
+                }]
+            };
+
+            // Configuração do gráfico
+            const config = {
+                type: 'pie',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false // Oculta a legenda do gráfico
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw + ' unidades';
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            // Criar o gráfico
+            const ctx = document.getElementById('myPieChart').getContext('2d');
+            const myPieChart = new Chart(ctx, config);
+
+            // Função para atualizar os valores das caixinhas
+            function updateBoxValues() {
+                document.getElementById('motoristasCountBox').textContent = data.datasets[0].data[0];
+                document.getElementById('usuariosCountBox').textContent = data.datasets[0].data[1];
+                document.getElementById('onibusCountBox').textContent = data.datasets[0].data[2];
+            }
+
+            // Atualizar os valores das caixinhas inicialmente
+            updateBoxValues();
+        </script>
+
+
+    </body>
+
+</html>

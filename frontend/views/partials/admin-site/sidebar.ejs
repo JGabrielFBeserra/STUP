@@ -1,11 +1,12 @@
-<div class="d-flex flex-column p-4 text-bg-dark " style="height: 100%;">
+<!-- sidebar -->
+<div class="d-flex flex-column p-4 text-bg-dark" style="height: 100vh;" >
     <a href="/admin" class="d-flex align-items-center text-secondary text-decoration-none">
         <span class="fs-4">STUP Dashboard</span>
     </a>
     <hr>
     <ul class="nav flex-column mb-auto">
         <li class="nav-item">
-            <a href="#" class="nav-link active text-secondary">
+            <a href="/admin" class="nav-link active text-secondary">
                 Home
             </a>
         </li>
@@ -15,12 +16,12 @@
                 Cadastros
             </span>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">Usuários</a></li>
-                <li><a class="dropdown-item" href="#">Cartões</a></li>
-                <li><a class="dropdown-item" href="#">Motoristas</a></li>
-                <li><a class="dropdown-item" href="#">Linhas</a></li>
-                <li><a class="dropdown-item" href="#">Ônibus</a></li>
-                <li><a class="dropdown-item" href="#">Funcionários</a></li>
+                <li><a class="dropdown-item" href="/admin/create/user">Usuário</a></li>
+                <li><a class="dropdown-item" href="/admin/create/card">Cartão</a></li>
+                <li><a class="dropdown-item" href="/admin/create/driver">Motorista</a></li>
+                <li><a class="dropdown-item" href="/admin/create/route">Linha</a></li>
+                <li><a class="dropdown-item" href="/admin/create/bus">Ônibus</a></li>
+                <li><a class="dropdown-item" href="/admin/create/func">Funcionário</a></li>
             </ul>
         </div>
         <div class="dropdown nav-link text-secondary">
@@ -40,3 +41,5 @@
         </div>
     </ul>
 </div>
+
+
