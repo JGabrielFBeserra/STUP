@@ -78,7 +78,7 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "npm i && nodemon ./bin/www"
   },
   "keywords": [],
   "author": "",

@@ -1,6 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-const cardSchema = require('../middlewares/validationCard.ts');
+const cardSchema = require('../middlewares/validation.js');
 
 exports.createCard = async (req, res) => {
     try {

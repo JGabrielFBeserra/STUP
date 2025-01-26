@@ -1,12 +1,11 @@
-//userRoutes.js
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/userController');
+const userController = require('../controllers/userController'); // Importa o controller de cartão
 
-// Definindo as rotas de usuário
-router.get('/users', userController.getUsers);  // Listar todos os usuários
-router.post('/users', userController.createUser);  // Criar um novo usuário
-router.put('/users/:id', userController.updateUser);  // Atualizar usuário existente
-router.delete('/users/:id', userController.deleteUser);  // Excluir um usuário
+// Definindo as rotas de cartão
+// router.get('/cards', cardController.getCards); // Listar todos os cartões
+router.post('/user', userController.createUser); // Criar um novo cartão
+// router.put('/card/:id', cardController.updateCard); // Atualizar um cartão existente
+// router.delete('/card/:id', cardController.deleteCard); // Excluir um cartão
 
 module.exports = router;

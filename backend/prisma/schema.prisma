@@ -7,13 +7,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model cartao {
-  id      Int      @id @default(autoincrement())
-  saldo   Float?   @db.Float
-  tipo    Int?     // ou String?, dependendo do seu desejo
-  status  Boolean? @default(true)  // Definindo o valor padrão como 'true'
-  usuario usuario?
+model usuario {
+  id              Int               @id @default(autoincrement())
+  foto            String?           @db.VarChar(255)
+  nome            String?           @db.VarChar(255)
+  nascimento      DateTime?         @db.DateTime(0)
+  cpf             String            @unique @db.VarChar(11)
+  senha           String?           @db.VarChar(255)
+  usuarios_viagem usuarios_viagem[]
+  cartoes         cartao[]          // Relacionamento bidirecional com os cartões
 }
+
+model cartao {
+  id         Int      @id @default(autoincrement())
+  saldo      Float?   @db.Float
+  tipo       Int?     // ou String?, dependendo do seu desejo
+  status     Boolean? @default(true)  // Valor padrão como 'true'
+  usuarioId  Int      // Chave estrangeira obrigatória
+  usuario    usuario  @relation(fields: [usuarioId], references: [id]) // Relacionamento com usuário
+}
+
+
 
 model funcionario {
   id         Int       @id @default(autoincrement())
@@ -50,18 +64,6 @@ model onibus {
   modelo String?  @db.VarChar(255)
   placa  String?  @unique(map: "placa") @db.VarChar(255)
   viagem viagem[]
-}
-
-model usuario {
-  id              Int               @id @default(autoincrement())
-  foto            String?           @db.VarChar(255)
-  nome            String?           @db.VarChar(255)
-  nascimento      DateTime?         @db.DateTime(0)
-  cpf             String?           @unique(map: "cpf") @db.VarChar(255)
-  senha           String?           @db.VarChar(255)
-  cartao_id       Int?              @unique(map: "cartao_id")
-  cartao          cartao?           @relation(fields: [cartao_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "usuario_ibfk_1")
-  usuarios_viagem usuarios_viagem[]
 }
 
 model usuarios_viagem {
