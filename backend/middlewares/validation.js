@@ -31,7 +31,12 @@ const cardSchema = z.object({
   tipoCartao: z.number()
     .int("O tipo de cartão deve ser um número inteiro")
     .min(1, { message: "Tipo de cartão: Deve-se escolher Comum, Estudante ou Idoso" })
-    .max(3, { message: "Tipo de cartão: Deve-se escolher Comum, Estudante ou Idoso" })
+    .max(3, { message: "Tipo de cartão: Deve-se escolher Comum, Estudante ou Idoso" }),
+
+  codigoCartao: z.string()
+    .max(20, { message: "Código do cartão: O código deve ter no máximo 20 caracteres" })
+    .regex(/^[A-Za-z0-9]+$/, { message: "Código do cartão: O código deve conter apenas caracteres alfanuméricos" })
+    .min(1, { message: "Código do cartão: O código é obrigatório" }),
 });
 
 const userSchema = z.object({

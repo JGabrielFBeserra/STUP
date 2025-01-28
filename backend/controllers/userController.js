@@ -1,37 +1,13 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const { userSchema } = require('../middlewares/validation'); // Certifique-se de que o caminho esteja correto
-const multer = require('multer');
-
-// Configuração do multer para salvar os arquivos
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Certifique-se de que a pasta 'uploads/' exista
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname); // Nome único para o arquivo
-  }
-});
-
-const upload = multer({ 
-  storage: storage,
-  fileFilter: (req, file, cb) => {
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-      cb(null, true); // Aceitar o arquivo
-    } else {
-      cb(new Error('Formato de arquivo não permitido, somente JPG e PNG'), false); // Rejeitar arquivo
-    }
-  }
-}).single('foto'); // 'foto' deve ser o nome do campo no FormData
-
 
 exports.createUser = async (req, res)  => {
   try {
 
+    const foto = req.file ? req.file.path : null;
     
     const dadosValidos = userSchema.parse(req.body);
-
-    const foto = req.file ? req.file.path : null;
 
     const usuarioExistente = await prisma.usuario.findUnique({
       where: { cpf: dadosValidos.cpf },
@@ -55,13 +31,14 @@ exports.createUser = async (req, res)  => {
         senha: dadosValidos.senha,
       },
     });
-
-    console.log(dadosValidos.cpf);
+ 
+    
 
      return res.status(201).json({
       mensagem: 'Usuário cadastrado com sucesso!',
-      usuario,
+      usuarioId: usuario.id,
     });
+    
   } catch (error) {
     if (error.errors) {
       return res.status(400).json({
@@ -77,3 +54,86 @@ exports.createUser = async (req, res)  => {
   }
 };
 
+
+exports.getUsers = async (req, res) => {
+  try {
+    const usuarios = await prisma.usuario.findMany({
+      include: {
+        cartao: true, // incluir os cartao (ex: usuario.cartao.saldo === pra que isso exista)
+      },
+    });
+    
+
+    return res.status(200).json(usuarios);
+  } catch (error) {
+    return res.status(500).json({
+      mensagem: 'Erro interno no servidor',
+      erro: error.message,
+    });
+  }
+};
+
+
+
+exports.deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;  
+    const usuario = await prisma.usuario.delete({
+      where: { id: parseInt(id) } 
+    });
+    res.status(200).json({ message: 'Usuário deletado com sucesso' });
+  } catch (error) {
+    res.status(500).json({ message: 'Erro ao deletar usuário', error: error.message });
+  }
+};
+
+exports.updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;  // O ID do usuário vem da URL
+    const foto = req.file ? req.file.path : null;  // Foto pode ser opcional no update
+
+    // Valida os dados recebidos
+    const dadosValidos = userSchema.parse(req.body);
+
+    // Verifica se o usuário existe
+    const usuarioExistente = await prisma.usuario.findUnique({
+      where: { id: parseInt(id) },  // Usa o id da URL para buscar o usuário
+    });
+
+    if (!usuarioExistente) {
+      return res.status(404).json({
+        mensagem: 'Usuário não encontrado.',
+        erro: 'Usuário não encontrado com o ID fornecido.',
+      });
+    }
+
+    const usuarioAtualizado = await prisma.usuario.update({
+      where: { id: parseInt(id) },  // ID do usuário para fazer a atualização
+      data: {
+        foto: foto || usuarioExistente.foto,  // Mantém a foto anterior se não for enviada uma nova
+        nome: dadosValidos.nome || usuarioExistente.nome,
+        nascimento: new Date(dadosValidos.nascimento) || usuarioExistente.nascimento,
+        cpf: dadosValidos.cpf || usuarioExistente.cpf,  // Se o CPF não for alterado, mantemos o atual
+        senha: dadosValidos.senha || usuarioExistente.senha,  // Se a senha não for alterada, mantemos a atual
+      },
+    });
+
+    return res.status(200).json({
+      mensagem: 'Usuário atualizado com sucesso!',
+      usuario: usuarioAtualizado,
+    });
+
+  } catch (error) {
+    if (error.errors) {
+      return res.status(400).json({
+        mensagem: error.errors.map(e => e.message).join(', '),
+        erros: error.errors,
+      });
+    } else {
+      return res.status(500).json({
+        mensagem: 'Erro interno no servidor',
+        erro: error.message,
+      });
+    }
+  }
+};

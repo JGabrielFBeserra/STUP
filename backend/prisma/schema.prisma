@@ -15,17 +15,18 @@ model usuario {
   cpf             String            @unique @db.VarChar(11)
   senha           String?           @db.VarChar(255)
   usuarios_viagem usuarios_viagem[]
-  cartoes         cartao[]          // Relacionamento bidirecional com os cartões
+  cartao        cartao?           // Relacionamento 1:1 com os cartões
 }
 
 model cartao {
-  id         Int      @id @default(autoincrement())
-  saldo      Float?   @db.Float
-  tipo       Int?     // ou String?, dependendo do seu desejo
-  status     Boolean? @default(true)  // Valor padrão como 'true'
-  usuarioId  Int      // Chave estrangeira obrigatória
-  usuario    usuario  @relation(fields: [usuarioId], references: [id]) // Relacionamento com usuário
+  usuarioId     Int      @id // O usuarioId será a chave primária
+  codigoCartao  String?  @unique @db.VarChar(20) // Código do cartão único
+  saldo         Float?   @db.Float
+  tipo          Int?     // ou String?, dependendo do seu desejo
+  status        Boolean? @default(true)  // Valor padrão como 'true'
+  usuario       usuario @relation(fields: [usuarioId], references: [id]) // Relacionamento com usuário
 }
+
 
 
 
