@@ -38,7 +38,20 @@ app.get('/admin/get/drivers', (req, res) => {res.render('admin-getAll', { active
 app.get('/admin/get/bus', (req, res) => {res.render('admin-getAll', { activePage: 'bus' }); });
 app.get('/admin/get/routes', (req, res) => {res.render('admin-getAll', { activePage: 'route' }); });
 app.get('/admin/get/funcs', (req, res) => {res.render('admin-getAll', { activePage: 'func' }); });
-
+// admin-site-edit
+app.get('/admin/edit/user/:id', (req, res) => {res.render('admin-edit', { activePage: 'user' }); });
+app.get('/admin/edit/card', (req, res) => {res.render('admin-edit', { activePage: 'card' }); });
+app.get('/admin/edit/driver', (req, res) => {res.render('admin-edit', { activePage: 'driver' }); });
+app.get('/admin/edit/bus', (req, res) => {res.render('admin-edit', { activePage: 'bus' }); });
+app.get('/admin/edit/route', (req, res) => {res.render('admin-edit', { activePage: 'route' }); });
+app.get('/admin/edit/func', (req, res) => {res.render('admin-edit', { activePage: 'func' }); });
+// admin-site-get
+app.get('/admin/get/user/:id', (req, res) => {res.render('admin-get', { activePage: 'user' }); });
+app.get('/admin/get/card', (req, res) => {res.render('admin-get', { activePage: 'card' }); });
+app.get('/admin/get/driver', (req, res) => {res.render('admin-get', { activePage: 'driver' }); });
+app.get('/admin/get/bus', (req, res) => {res.render('admin-get', { activePage: 'bus' }); });
+app.get('/admin/get/route', (req, res) => {res.render('admin-get', { activePage: 'route' }); });
+app.get('/admin/get/func', (req, res) => {res.render('admin-get', { activePage: 'func' }); });
 
 
 

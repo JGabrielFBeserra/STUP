@@ -4,31 +4,29 @@ document.addEventListener('DOMContentLoaded', () => {
     
     tabela.addEventListener('click', async (event) => {
       // Verifica se o clique foi em um botão "Deletar"
-      if (event.target && event.target.classList.contains('bg-danger')) {
+      if (event.target && event.target.id === 'active') {
         const usuarioId = event.target.closest('tr').querySelector('td:first-child').innerText;  // Pega o ID do usuário da tabela
-        const confirmDelete = confirm('Tem certeza que deseja deletar este usuário?');
+        const confirmDelete = confirm('Tem certeza que deseja ativar este usuário?');
   
         if (confirmDelete) {
           try {
-            fetch(`http://localhost:3000/api/users/${usuarioId}`, {
-                method: 'DELETE',
+            const response = await fetch(`http://localhost:3000/api/user/putD/${usuarioId}`, {
+                method: 'PUT',
                 headers: {
                   'Content-Type': 'application/json',
                 },
               });
-  
+            
             if (response.ok) {
-              alert('Usuário deletado com sucesso');
-              // Remover a linha da tabela
-              const linha = event.target.closest('tr');
-              linha.remove();
-            } else {
+              alert('Usuário ativado com sucesso');
+              location.reload();
+            } else {              
               const errorData = await response.json();
-              alert(`Erro ao deletar usuário: ${errorData.message}`);
+              alert(`Erro ao ativar usuário: ${errorData.message}`);
             }
           } catch (error) {
-            console.error('Erro ao deletar usuário:', error);
-            alert('Erro ao tentar deletar o usuário');
+            console.error('Erro ao ativar usuário:', error);
+            alert('Erro ao tentar ativar o usuário');
           }
         }
       }

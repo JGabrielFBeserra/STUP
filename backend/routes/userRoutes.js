@@ -18,8 +18,12 @@ const storage = multer.diskStorage({
 
 // Definindo as rotas de cartão
 router.get('/users', userController.getUsers);
-router.post('/user', upload.single('foto'), userController.createUser);
-router.put('/user/:id', userController.updateUser); 
-router.delete('/user/:id', userController.deleteUser); 
+router.get('/user/:id', userController.getUser);
+router.post('/user', upload.single('foto'), userController.createUser); 
+router.put('/user/putA/:id', userController.desactiveUser); 
+router.put('/user/putD/:id', userController.activeUser); 
+router.put('/user/put/:id', upload.single('foto'), userController.editUser); 
+
+
 
 module.exports = router;

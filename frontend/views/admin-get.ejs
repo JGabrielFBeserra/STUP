@@ -12,17 +12,17 @@
 
 
             <div class="col-10 px-0">
-                <header class="py-3 mb-4 border-bottom">
+                <header class="container py-3 mb-4 border-bottom">
                     <div class="container d-flex flex-wrap justify-content-center">
                         <a href="/"
                             class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
                             <span class="fs-4">
-                                <%= activePage==='user' ? 'Listagem Usuário' : '' %>
-                                    <%= activePage==='card' ? 'Listagem Cartão' : '' %>
-                                        <%= activePage==='driver' ? 'Listagem Motorista' : '' %>
-                                            <%= activePage==='func' ? 'Listagem Funcionário' : '' %>
-                                                <%= activePage==='route' ? 'Listagem Linha' : '' %>
-                                                    <%= activePage==='bus' ? 'Listagem Ônibus' : '' %>
+                                <%= activePage==='user' ? 'Visualizar Usuário' : '' %>
+                                    <%= activePage==='card' ? 'Visualizar Cartão' : '' %>
+                                        <%= activePage==='driver' ? 'Visualizar Motorista' : '' %>
+                                            <%= activePage==='func' ? 'Visualizar Funcionário' : '' %>
+                                                <%= activePage==='route' ? 'Visualizar Linha' : '' %>
+                                                    <%= activePage==='bus' ? 'Visualizar Ônibus' : '' %>
                             </span>
                         </a>
 
@@ -69,69 +69,7 @@
 
                                 <% if (activePage==='user' ) { %>
                                     <form id="userForm" method="POST" enctype="multipart/form-data">
-                                        <div class="row">
-
-                                            <div class="col">
-                                                <label for="foto">Foto:</label>
-                                                <div id="preview-container">
-                                                    <img id="fotoPreview" src="#" alt="Pré-view"
-                                                        style="display:block; width: 100px; background-color: rgb(170, 170, 170); height: 100px; object-fit: cover; margin-top: 5px; margin-bottom: 5px;">
-                                                </div>
-                                                <input type="file" id="foto" name="foto" class="form-control">
-
-
-                                            </div>
-                                            <div class="col">
-
-                                                <div style="margin-top: 105px;">
-                                                    <label for="nome">*Nome:</label>
-                                                    <input type="text" id="nome" name="nome" class="form-control"
-                                                        placeholder="Nome" required>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <hr>
-
-                                        <div class="row">
-                                            <div class="col">
-                                                <!-- Campo para Data de Nascimento -->
-                                                <label for="nascimento">*Data de Nascimento:</label>
-                                                <input type="date" id="nascimento" name="nascimento"
-                                                    class="form-control" required>
-                                            </div>
-
-                                            <div class="col">
-                                                <label for="cpf">*CPF:</label>
-                                                <input type="text" id="cpf" name="cpf" class="form-control"
-                                                    placeholder="CPF" maxlength="11" pattern="\d{11}"
-                                                    title="Digite apenas números, 11 dígitos." required>
-                                            </div>
-
-                                        </div>
-                                        <br>
-                                        <hr>
-
-                                        <div class="row">
-                                            <div class="col">
-                                                <!-- Campo para E-mail -->
-                                                <label for="email">*E-mail:</label>
-                                                <input type="email" id="email" name="email" class="form-control"
-                                                    placeholder="E-mail" required>
-                                            </div>
-
-                                            <div class="col">
-                                                <!-- Campo para Senha -->
-                                                <label for="senha">*Senha:</label>
-                                                <input type="password" id="senha" name="senha" class="form-control"
-                                                    placeholder="Senha" required>
-                                            </div>
-                                        </div>
-                                        <hr>
-
-                                        <!-- Botão de Enviar -->
-                                        <input type="submit" value="Cadastrar Usuário" class="btn btn-primary">
+                                        
                                     </form>
                                     <% } %>
 
@@ -208,53 +146,7 @@
         </div>
       
 <div id="alertContainer" class="container mt-3"></div>
-<script>
-  // elementos formulário
-  const userForm = document.getElementById('userForm');
-  const alertContainer = document.getElementById('alertContainer');
-
-  // exibir alertas de sucesso ou erro
-  function showAlert(message, type) {
-    const alertDiv = document.createElement('div');
-    alertDiv.classList.add('alert', `alert-${type}`, 'alert-dismissible', 'fade', 'show');
-    alertDiv.setAttribute('role', 'alert');
-    alertDiv.innerHTML = `
-      ${message}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    `;
-    alertContainer.appendChild(alertDiv);
-    setTimeout(() => {
-      alertDiv.classList.remove('show');
-      setTimeout(() => {
-        alertDiv.remove();
-      }, 500);
-    }, 5000);
-  }
-
-  userForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(userForm);
    
-    try {
-      const response = await fetch('http://localhost:3000/api/user', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        showAlert(result.mensagem, 'success'); // Alerta de sucesso
-      } else {
-        const error = await response.json();
-        showAlert(`Erro: ${error.mensagem}`, 'danger'); // Alerta de erro
-      }
-    } catch (error) {
-      showAlert("Erro ao enviar os dados para a API.", 'danger');
-      console.error(error);
-    }
-  });
-</script>
 
 
 
@@ -263,6 +155,7 @@
             crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/66b39b2469.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/js/admin-site/user/get.js"></script>
     </body>
 
 </html>

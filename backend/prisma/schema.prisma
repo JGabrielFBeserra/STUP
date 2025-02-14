@@ -15,7 +15,7 @@ model usuario {
   cpf             String            @unique @db.VarChar(11)
   senha           String?           @db.VarChar(255)
   usuarios_viagem usuarios_viagem[]
-  cartao        cartao?           // Relacionamento 1:1 com os cartões
+  cartao        cartao?           // relacionamento 1:1 com cartao
 }
 
 model cartao {
@@ -24,7 +24,7 @@ model cartao {
   saldo         Float?   @db.Float
   tipo          Int?     // ou String?, dependendo do seu desejo
   status        Boolean? @default(true)  // Valor padrão como 'true'
-  usuario       usuario @relation(fields: [usuarioId], references: [id]) // Relacionamento com usuário
+  usuario       usuario @relation(fields: [usuarioId], references: [id]) 
 }
 
 

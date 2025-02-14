@@ -17,12 +17,12 @@
                         <a href="/"
                             class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
                             <span class="fs-4">
-                                <%= activePage==='user' ? 'Cadastro Usuário' : '' %>
-                                    <%= activePage==='card' ? 'Cadastro Cartão' : '' %>
-                                        <%= activePage==='driver' ? 'Cadastro Motorista' : '' %>
-                                            <%= activePage==='func' ? 'Cadastro Funcionário' : '' %>
-                                                <%= activePage==='route' ? 'Cadastro Linha' : '' %>
-                                                    <%= activePage==='bus' ? 'Cadastro Ônibus' : '' %>
+                                <%= activePage==='user' ? 'Editar Usuário' : '' %>
+                                    <%= activePage==='card' ? 'Editar Cartão' : '' %>
+                                        <%= activePage==='driver' ? 'Editar Motorista' : '' %>
+                                            <%= activePage==='func' ? 'Editar Funcionário' : '' %>
+                                                <%= activePage==='route' ? 'Editar Linha' : '' %>
+                                                    <%= activePage==='bus' ? 'Editar Ônibus' : '' %>
                             </span>
                         </a>
 
@@ -137,31 +137,21 @@
                                             <hr>
 
                                             <div class="row">
-                                                <div class="col-11">
+                                                <div class="col">
+                                                    <!-- Campo para E-mail -->
+                                                    <label for="email">*E-mail:</label>
+                                                    <input type="email" id="email" name="email" class="form-control"
+                                                        placeholder="E-mail" required>
+                                                </div>
+
+                                                <div class="col">
                                                     <!-- Campo para Senha -->
                                                     <label for="senha">*Senha:</label>
                                                     <input type="password" id="senha" name="senha" class="form-control"
                                                         placeholder="Senha" required>
-                                                        
-                                                </div>
-                                                <div class="col-1">
-                                                    <label for="toggleSenha">*Ver senha:</label>
-                                                    <button type="button" id="toggleSenha" class="btn btn-secondary">👁️</button>
                                                 </div>
                                             </div>
                                             <hr>
-                                            <script>
-                                                document.getElementById('toggleSenha').addEventListener('click', function () {
-                                                    const senhaInput = document.getElementById('senha');
-                                                    if (senhaInput.type === "password") {
-                                                        senhaInput.type = "text";
-                                                        this.textContent = "🙈"; // Ícone de olho fechado
-                                                    } else {
-                                                        senhaInput.type = "password";
-                                                        this.textContent = "👁️"; // Ícone de olho aberto
-                                                    }
-                                                });
-                                            </script>
 
                                             <!-- Botão de Enviar -->
                                             <input type="submit" value="Cadastrar Usuário" class="btn btn-primary">
@@ -249,19 +239,7 @@
         <script src="https://kit.fontawesome.com/66b39b2469.js" crossorigin="anonymous"></script>
         
         
-        <% if (activePage === 'user') { %>
-            <script src="/js/admin-site/user/post.js"></script>
-          <% } else if (activePage === 'card') { %>
-            <script src="/js/admin-site/card/post.js"></script>
-          <% } else if (activePage === 'driver') { %>
-            <script src="/js/admin-site/driver/post.js"></script>
-          <% } else if (activePage === 'bus') { %>
-            <script src="/js/admin-site/bus/post.js"></script>
-          <% } else if (activePage === 'route') { %>
-            <script src="/js/admin-site/route/post.js"></script>
-          <% } else if (activePage === 'func') { %>
-            <script src="/js/admin-site/func/post.js"></script>
-          <% } %>
+        <script src="/js/admin-site/user/edit.js"></script>
           
     </body>
 
